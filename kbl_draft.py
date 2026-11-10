@@ -1,5 +1,3 @@
-Python 3.11.2 (tags/v3.11.2:878ead1, Feb  7 2023, 16:38:35) [MSC v.1934 64 bit (AMD64)] on win32
-Type "help", "copyright", "credits" or "license()" for more information.
 import base64
 import json
 import os
@@ -246,47 +244,47 @@ if shared_data:
         )
         p2 = shared_data.get("picks_r2", {})
         r2_c1 = st.columns(5)
-...         for r in range(1, 6):
-...             with r2_c1[r - 1]:
-...                 st.metric(
-...                     f"2R {r}순위",
-...                     p2.get(f"2R_{r}순위", "-").split(" (")[0],
-...                 )
-...         r2_c2 = st.columns(5)
-...         for r in range(6, 11):
-...             with r2_c2[r - 6]:
-...                 st.metric(
-...                     f"2R {r}순위",
-...                     p2.get(f"2R_{r}순위", "-").split(" (")[0],
-...                 )
-... 
-... col_sch1, col_sch2 = st.columns(2)
-... with col_sch1:
-...     st.markdown(
-...         """
-...     <div class="schedule-box">
-...         <h5>순위 추첨 · 11/9(월)</h5>
-...         <p> 1순위:KT, 2순위:현대모비스, 3순위:SK, 4순위:정관장♥, 5순위:한국가스공사, 6순위:DB, 7순위:삼성, 8순위:LG, 9순위:소노, 10순위:KCC</p>
-...     </div>
-...     """,
-...         unsafe_allow_html=True,
-...     )
-... with col_sch2:
-...     st.markdown(
-...         """
-...     <div class="schedule-box">
-...         <h5>드래프트 첫 지명 · 11/20(금)</h5>
-...         <p>결과 대기 중</p>
-...     </div>
-...     """,
-...         unsafe_allow_html=True,
-...     )
-... 
-... # ---------------------------------------------------------
-... # 5. 세션 상태 관리 & 동적 중복 제외 로직
-... # ---------------------------------------------------------
-... st.markdown("### 🏀 내 예측 카드 작성 및 수정하기")
-... st.caption(
+        for r in range(1, 6):
+            with r2_c1[r - 1]:
+                st.metric(
+                    f"2R {r}순위",
+                    p2.get(f"2R_{r}순위", "-").split(" (")[0],
+                )
+        r2_c2 = st.columns(5)
+        for r in range(6, 11):
+            with r2_c2[r - 6]:
+                st.metric(
+                    f"2R {r}순위",
+                    p2.get(f"2R_{r}순위", "-").split(" (")[0],
+                )
+
+col_sch1, col_sch2 = st.columns(2)
+with col_sch1:
+    st.markdown(
+        """
+    <div class="schedule-box">
+        <h5>순위 추첨 · 11/9(월)</h5>
+        <p> 1순위:KT, 2순위:현대모비스, 3순위:SK, 4순위:정관장♥, 5순위:한국가스공사, 6순위:DB, 7순위:삼성, 8순위:LG, 9순위:소노, 10순위:KCC</p>
+    </div>
+    """,
+        unsafe_allow_html=True,
+    )
+with col_sch2:
+    st.markdown(
+        """
+    <div class="schedule-box">
+        <h5>드래프트 첫 지명 · 11/20(금)</h5>
+        <p>결과 대기 중</p>
+    </div>
+    """,
+        unsafe_allow_html=True,
+    )
+
+# ---------------------------------------------------------
+# 5. 세션 상태 관리 & 동적 중복 제외 로직
+# ---------------------------------------------------------
+st.markdown("### 🏀 내 예측 카드 작성 및 수정하기")
+st.caption(
     "💡 이미 예측을 제출했더라도 **동일한 닉네임과 비밀번호**를 입력하면 나중에 언제든지 수정할 수 있습니다."
 )
 
@@ -464,3 +462,4 @@ else:
             for r in range(6, 11):
                 with r2_cols2[r - 6]:
                     name_only = p2.get(f"2R_{r}순위", "-").split(" (")[0]
+                    st.metric(f"2R {r}순위", name_only)
